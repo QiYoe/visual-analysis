@@ -8,28 +8,31 @@
 </template>
 
 <script>
-import { ref, computed, watch, getCurrentInstance } from "vue";
+import { ref, computed, watch, getCurrentInstance } from 'vue'
 export default {
-  setup () {
+  setup() {
     const count = ref(0)
     const add = () => {
       count.value++
     }
-    watch(() => count.value, val => {
-      console.log(`count is ${val}`)
-    })
+    watch(
+      () => count.value,
+      (val) => {
+        console.log(`count is ${val}`)
+      }
+    )
     const doubleCount = computed(() => count.value * 2)
-    const { ctx } = getCurrentInstance();
-    const update = () => { 
-      ctx.$store.commit('setTestA', count) 
-    };
+    const { ctx } = getCurrentInstance()
+    const update = () => {
+      ctx.$store.commit('setTestA', count)
+    }
     return {
       count,
       doubleCount,
       add,
-      update
+      update,
     }
-  }
+  },
 }
 </script>
 

@@ -7,16 +7,16 @@
 </template>
 
 <script>
-import { computed, getCurrentInstance } from "vue";
+import { computed, getCurrentInstance } from 'vue'
 export default {
-  setup () {
-    const { ctx } = getCurrentInstance();
-    console.log(ctx.$router.currentRoute.value);
-    const a = computed(() => ctx.$store.state.test.a);
+  setup() {
+    const { ctx } = getCurrentInstance()
+    console.log(ctx.$router.currentRoute.value)
+    const a = computed(() => ctx.$store.state.test.a)
     return {
-      a
+      a,
     }
-  }
+  },
 }
 </script>
 

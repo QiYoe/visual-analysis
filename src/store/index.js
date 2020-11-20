@@ -7,7 +7,7 @@ export default createStore({
     }
   },
   mutations: {
-    setTestA(state, value) {
+    setTestA (state, value) {
       state.test.a = value
     }
   },
