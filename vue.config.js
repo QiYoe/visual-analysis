@@ -6,6 +6,8 @@ const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPl
 const CompressionWebpackPlugin = require("compression-webpack-plugin");
 const AddAssetHtmlPlugin = require("add-asset-html-webpack-plugin");
 
+const port = process.env.port || process.env.npm_config_port || 1314 // dev port
+
 
 module.exports = {
   // 'admin': {
@@ -90,8 +92,9 @@ module.exports = {
         vue: "Vue",
         "element-ui": "ELEMENT",
         "vue-router": "VueRouter",
-        vuex: "Vuex",
-        axios: "axios"
+        vuex: "vuex",
+        axios: "axios",
+        echarts: 'echarts'
       };
     }  
   },
@@ -123,13 +126,14 @@ module.exports = {
 
     const cdn = {
       // 访问https://unpkg.com/element-ui/lib/theme-chalk/index.css获取最新版本
-      css: ["//unpkg.com/element-ui@2.10.1/lib/theme-chalk/index.css"],
+      css: ["//unpkg.com/element-ui@2.14.1/lib/theme-chalk/index.css"],
       js: [
-        "//unpkg.com/vue@2.6.10/dist/vue.min.js", // 访问https://unpkg.com/vue/dist/vue.min.js获取最新版本
-        "//unpkg.com/vue-router@3.0.6/dist/vue-router.min.js",
-        "//unpkg.com/vuex@3.1.1/dist/vuex.min.js",
-        "//unpkg.com/axios@0.19.0/dist/axios.min.js",
-        "//unpkg.com/element-ui@2.10.1/lib/index.js"
+        "//unpkg.com/vue@3.0.3/dist/vue.global.prod.js", // 访问https://unpkg.com/vue/dist/vue.min.js获取最新版本
+        "//unpkg.com/vue-router@3.4.9/dist/vue-router.js",
+        "//unpkg.com/vuex@3.6.0/dist/vuex.js",
+        "//unpkg.com/axios@0.21.0/dist/axios.min.js",
+        "//unpkg.com/element-ui@2.14.1/lib/index.js",
+        "//cdn.bootcdn.net/ajax/libs/echarts/4.8.0/echarts.min.js"
       ]
     }
     // 如果使用多页面打包，使用vue inspect --plugins查看html是否在结果数组中
@@ -152,7 +156,7 @@ module.exports = {
     open: true,
     /* 设置为0.0.0.0则所有的地址均能访问 */
     host: '0.0.0.0',
-    port: 10086,
+    port: port,
     https: false,
     hotOnly: false,
     /* 使用代理 */
